@@ -21,15 +21,48 @@
 
   <div class="container">
       <div class="row">
-          <div class="col-8"><iframe height="500" width="100%" 
-            ="https://affinitihealth.looker.com/embed/looks/1098" frameborder="0" allowfullscreen></iframe></div>
+          <div class="col-8"><iframe height="500" width="100%" src="https://affinitihealth.looker.com/embed/looks/1098" frameborder="0" allowfullscreen></iframe></div>
           <div class="col-md-4">
-            <textarea name="message" cols="30" rows="20" placeholder="Enter your message..."></textarea></div>
+            <form name='form1'>
+              <br>
+              <br>
+                <textarea name="message" cols="30" rows="10" placeholder="Enter your message..."></textarea>
+                <br>
+                <input onclick='inputConfirmation()' type='button' value='Confirmation' id='button'>
+                <input onclick='inputReminder()' type='button' value='Reminder' id='button'>
+                <br>
+                <br>
+                <input onclick='send()' type='button' value='Schedule Message' id='button'>
+              
+                
+            </form>          
+          </div>
       </div>
   </div>
 
 </body>
 
-    
+<script>
+
+  function input (text) {
+    var text = text
+    document.forms.form1.message.value = text;
+  }
+
+  function inputConfirmation(){
+      input("This is a reminder you have an appointment on {{appointment_date}} at {{appointment_time}} at {{doctor's office}}. To confirm you are planning on showing up please reply 'YES'");
+  }    
+
+  function inputReminder(text){
+    input("Please schedule follow-up appointment for your {{vaccine_name}} by replying to this message.")  
+  }    
+
+  function send(){
+    // call_plivo_function()
+    input("Message Sent")
+  }
+  </script>
+
+
 
 </html>
